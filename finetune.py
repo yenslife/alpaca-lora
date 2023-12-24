@@ -24,6 +24,7 @@ from transformers import LlamaForCausalLM, LlamaTokenizer
 
 from utils.prompter import Prompter
 
+from transformers import BitsAndBytesConfig
 
 def train(
     # model/data params
@@ -109,12 +110,27 @@ def train(
     if len(wandb_log_model) > 0:
         os.environ["WANDB_LOG_MODEL"] = wandb_log_model
 
-    model = LlamaForCausalLM.from_pretrained(
-        base_model,
-        load_in_8bit=True,
-        torch_dtype=torch.float16,
-        device_map=device_map,
+    load_in_4bit = True
+    load_in_8bit = False
+    bnb_config = BitsAndBytesConfig(
+        load_in_4bit=load_in_4bit,
+        load_in_8bit=load_in_8bit,
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_compute_dtype=torch.float16,
     )
+    model = LlamaForCausalLM.from_pretrained(
+        base_model, 
+        quantization_config=bnb_config, 
+        torch_dtype=torch.float16, 
+        device_map=device_map
+    )
+    #model = LlamaForCausalLM.from_pretrained(
+    #    base_model,
+    #    load_in_8bit=False,
+    #    torch_dtype=torch.float16,
+    #    device_map=device_map,
+    #)
 
     tokenizer = LlamaTokenizer.from_pretrained(base_model)
 
