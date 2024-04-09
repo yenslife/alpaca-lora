@@ -1,6 +1,6 @@
 {
     "description": "中文的 template，用來 Alpaca-LoRA 的訓練",
-    "prompt_input": "以下是描述任務的指示，配合提供進一步上下文的輸入。請撰寫一個適當完成請求的繁體中文回應。\n\n### instruction:\n{instruction}\n\n### input:{intput}\n\n### Response:",
+    "prompt_input": "以下是描述任務的指示，配合提供進一步上下文的輸入。請撰寫一個適當完成請求的繁體中文回應。\n\n### instruction:\n{instruction}\n\n### input:{input}\n\n### Response:",
     "prompt_no_input": "以下是描述任務的指示，配合提供進一步上下文的輸入。請撰寫一個適當完成請求的繁體中文回應。\n\n### instruction:\n{instruction}\n\n### Response:",
     "response_split": "### Response:"    
 }
