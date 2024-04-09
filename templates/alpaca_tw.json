@@ -1,0 +1,6 @@
+{
+    "description": "中文的 template，用來 Alpaca-LoRA 的訓練",
+    "prompt_input": "以下是一個描述任務的指示。寫一個回應，以適當地完成請求。\n\n### instruction:\n{instruction}\n\n### input:{intput}\n\n### Response:",
+    "prompt_no_input": "以下是一個描述任務的指示。寫一個回應，以適當地完成請求。\n\n### instruction:\n{instruction}\n\n### Response:",
+    "response_split": "### Response:"    
+}
